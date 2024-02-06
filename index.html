@@ -6,7 +6,7 @@
     <title id="title">Anti Fraud Guidelines</title>
     <script>
         function isChineseLanguage() {
-            const userLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
+            const userLanguages = [navigator.language || navigator.userLanguage];
             for (const lang of userLanguages) {
                 if (lang.includes('zh')) {
                     return true;
