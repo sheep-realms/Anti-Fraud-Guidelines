@@ -7,10 +7,14 @@
     <script>
         function isChineseLanguage() {
             const userLanguages = [navigator.language || navigator.userLanguage];
-            for (const lang of userLanguages) {
-                if (lang.includes('zh')) {
-                    return true;
+            try {
+                for (const lang of userLanguages) {
+                    if (lang.includes('zh')) {
+                        return true;
+                    }
                 }
+            } catch (error) {
+                return false;
             }
             return false;
         }
