@@ -2,7 +2,7 @@
 
 # Never Gonna Give You Up
 
-## parameter / 参数
+## Parameter / 参数
 
 - `d`: Delay / 延迟
 - `t`: Title / 标题
