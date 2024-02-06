@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti Fraud Guidelines</title>
+    <script>
+        function isChineseLanguage() {
+            const userLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
+            for (const lang of userLanguages) {
+                if (lang.includes('zh')) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        if (isChineseLanguage()) {
+            window.location.href = 'https://www.bilibili.com/video/BV1GJ411x7h7';
+        } else {
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
