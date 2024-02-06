@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anti Fraud Guidelines</title>
+    <title id="title">Anti Fraud Guidelines</title>
     <script>
         function isChineseLanguage() {
             const userLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
@@ -15,14 +15,41 @@
             return false;
         }
 
-        if (isChineseLanguage()) {
-            window.location.href = 'https://www.bilibili.com/video/BV1GJ411x7h7';
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        function Redirect() {
+            if (isChineseLanguage()) {
+                window.location.href = 'https://www.bilibili.com/video/BV1GJ411x7h7';
+            } else {
+                window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+            }
+        }
+
+        const elementTitle = document.getElementById('title');
+        const elementMessage = document.getElementById('message');
+        
+        const delay = Number(getUrlParam('d'));
+        const title = getUrlParam('t');
+        const message = getUrlParam('m');
+
+        if (typeof title === 'string') elementTitle.textContent = title;
+
+        if (!Number.isNaN(delay) && delay >= 4) {
+            setTimeout(Redirect, delay);
         } else {
-            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+            Redirect();
         }
     </script>
 </head>
 <body>
-    <p>Redirecting...</p>
+    <p id="message">Redirecting...</p>
+    
+    <script>
+        if (typeof message === 'string') elementMessage.textContent = message;
+    </script>
 </body>
 </html>
