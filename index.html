@@ -19,10 +19,10 @@
             return false;
         }
 
-        function getUrlParam(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
+        function getUrlParam(param) {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            return urlParams.get(param);
         }
 
         function Redirect() {
@@ -34,7 +34,6 @@
         }
 
         const elementTitle = document.getElementById('title');
-        const elementMessage = document.getElementById('message');
         
         const delay = Number(getUrlParam('d'));
         const title = getUrlParam('t');
@@ -52,8 +51,9 @@
 <body>
     <p id="message">Redirecting...</p>
     
-    <script>
-        if (typeof message === 'string') elementMessage.textContent = message;
+    <script >
+        const elementMessage = document.getElementById('message');
+        if (typeof message === 'string' || typeof message === 'number') elementMessage.textContent = message;
     </script>
 </body>
 </html>
